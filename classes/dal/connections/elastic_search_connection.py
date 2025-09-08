@@ -10,15 +10,15 @@ class ElasticSearchConnection:
 
 
     def __enter__(self):
-        self.elastic_search = Elasticsearch(self.uri)
+        self.open()
         return self.elastic_search
 
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        if self.elastic_search:
-            self.elastic_search.close()
+        self.close()
         if exc_type is not None:
             print(f"An exception occurred: {exc_val}")
+        return False
 
 
     def open(self) -> None:
