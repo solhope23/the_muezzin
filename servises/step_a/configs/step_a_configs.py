@@ -1,7 +1,7 @@
 import os
 import json
 
-class RetrieverConfigs:
+class StepAConfigs:
 
         data_directory_path = os.getenv("DATA_DIRECTORY_PATH", "data\podcasts")
         kafka_host = os.getenv("KAFKA_HOST", "localhost")
