@@ -1,5 +1,4 @@
 from pathlib import Path
-# import datetime
 
 class MetaData:
 
@@ -10,16 +9,6 @@ class MetaData:
         self.last_modified_time = file_path_object.stat().st_mtime
         self.creation_time = file_path_object.stat().st_ctime
 
-    #     self.timestamp_to_datetime()
-    #
-    #
-    # def timestamp_to_datetime(self) -> None:
-    #     self.last_modified_time = datetime.datetime.fromtimestamp(self.last_modified_time)
-    #     self.last_modified_time = self.last_modified_time.strftime("%Y-%m-%d %H:%M:%S.%f")
-    #     self.creation_time = datetime.datetime.fromtimestamp(self.creation_time)
-    #     print(type(self.creation_time))
-    #     self.creation_time = self.creation_time.strftime("%Y-%m-%d %H:%M:%S.%f")
-    #     print(type(self.creation_time))
 
 
     def get_metadata_dict(self) -> dict:

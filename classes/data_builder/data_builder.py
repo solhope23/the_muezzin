@@ -1,4 +1,5 @@
 from project.classes.data_builder.data_objects.metadata_object import MetaData
+import hashlib
 
 
 class DataBuilder:
@@ -9,3 +10,11 @@ class DataBuilder:
         for file_path_object in gen_files_path_object:
             metadata_object = MetaData(file_path_object)
             yield metadata_object
+
+
+    @staticmethod
+    def create_unique_id(values_for_hash):
+        result_values = ""
+        for value_for_hash in values_for_hash:
+            result_values += str(value_for_hash)
+        print(hashlib.sha1(result_values.encode()).hexdigest())
