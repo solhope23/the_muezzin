@@ -13,11 +13,9 @@ class DataBuilder:
 
 
     @staticmethod
-    def create_unique_id(values_for_hash):
-        result_values = ""
-        for value_for_hash in values_for_hash:
-            result_values += str(value_for_hash)
-        print(hashlib.sha1(result_values.encode()).hexdigest())
+    def create_unique_id(*values_for_hash):
+        result_values = "_".join(str(val) for val in values_for_hash)
+        return hashlib.sha1(result_values.encode()).hexdigest()
 
 
     @staticmethod
