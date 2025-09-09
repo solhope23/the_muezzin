@@ -1,8 +1,9 @@
-import pymongo
+from pymongo import MongoClient
 
 class MongoDBFetcher:
 
-    def __init__(self, client : pymongo):
+
+    def __init__(self, client : MongoClient):
         self.client = client
 
 
