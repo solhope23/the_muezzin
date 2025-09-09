@@ -21,7 +21,7 @@ class DataBuilder:
 
 
     @staticmethod
-    def gen_bulk_doc(docs_gen, index, is_id = None):
+    def gen_bulk_doc_builder(docs_gen, index, is_id = None):
         for doc in docs_gen:
             item = {"_index": index, "_source": doc}
             if is_id:
