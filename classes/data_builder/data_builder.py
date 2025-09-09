@@ -6,7 +6,7 @@ class DataBuilder:
 
 
     @staticmethod
-    def generator_metadata_to_metadata_object(gen_files_path_object):
+    def gen_metadata_to_metadata_object(gen_files_path_object):
         for file_path_object in gen_files_path_object:
             metadata_object = MetaData(file_path_object)
             yield metadata_object
@@ -21,7 +21,7 @@ class DataBuilder:
 
 
     @staticmethod
-    def elasticsearch_bulk_doc_builder(docs_gen, index, is_id = None):
+    def gen_bulk_doc(docs_gen, index, is_id = None):
         for doc in docs_gen:
             item = {"_index": index, "_source": doc}
             if is_id:

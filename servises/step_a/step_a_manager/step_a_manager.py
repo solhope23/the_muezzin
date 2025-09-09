@@ -16,7 +16,7 @@ class StepAManager:
     def manage(self):
         try:
             gen_files_path_object = FileReader.read_file_path_object_gen(self.data_directory_path)
-            gen_metadata_objects = DataBuilder.generator_metadata_to_metadata_object(gen_files_path_object)
+            gen_metadata_objects = DataBuilder.gen_metadata_to_metadata_object(gen_files_path_object)
             with KafkaProducerConnection(self.configs_producer) as kafka_client:
                 producer = MyKafkaProducer(kafka_client)
                 for metadata_object in gen_metadata_objects:
