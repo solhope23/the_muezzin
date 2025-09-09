@@ -2,7 +2,7 @@ from kafka import KafkaConsumer
 
 class MyKafkaConsumer:
 
-    def __init__(self, client):
+    def __init__(self, client : KafkaConsumer):
         self.client = client
 
 
