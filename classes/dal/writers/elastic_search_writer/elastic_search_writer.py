@@ -2,7 +2,7 @@ from elasticsearch import Elasticsearch
 from elasticsearch.helpers import bulk
 
 
-class ElasticSearchIndexer:
+class ElasticSearchWriter:
 
     def __init__(self, client : Elasticsearch):
         self.client = client

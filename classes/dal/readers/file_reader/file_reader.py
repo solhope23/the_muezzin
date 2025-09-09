@@ -13,5 +13,3 @@ class FileReader:
     def read_binary_audio_file(path):
         with open(path, "rb") as f:
             return f.read()
-
-
