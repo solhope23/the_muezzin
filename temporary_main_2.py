@@ -22,7 +22,7 @@ topic_name = 'podcasts_metadata'
 
 
 # elasticsearch_configs
-my_elastic_uri = os.getenv("elastic_uri", "http://localhost:9200")
+es_uri = os.getenv("elastic_uri", "http://localhost:9200")
 
 index_name = "podcasts_metadata"
 
@@ -37,11 +37,10 @@ mapping = {
             },
             "last_modified_time": {
                 "type": "date",
-                "format": "%Y-%m-%d %H:%M:%S.%f"
+                "format": "yyyy-MM-dd HH:mm:ss.SSSSSS"
             },
             "creation_time": {
-                "type": "date",
-                "format": "%Y-%m-%d %H:%M:%S.%f"
+                "type": "date"
             }
         }
     }
@@ -62,11 +61,13 @@ col_name = "podcasts_metadata"
 
 consumer = KafkaConsumer(topic_name, **my_consumer_configs)
 
-es = Elasticsearch(my_elastic_uri)
+es = Elasticsearch(es_uri)
 
 my_client = MongoClient(my_mongodb_uri)
 
 fs = GridFSBucket(my_client[db_name], col_name)
+
+
 #
 #
 
@@ -77,7 +78,7 @@ for consumer_message in consumer:
     message = consumer_message.value
 
     # convert back strTime to_datatime
-    format_string = "%Y-%m-%d %H:%M:%S.%f"
+    format_string = "yyyy-MM-dd HH:mm:ss.SSSSSS"
 
     message["last_modified_time"] = datetime.strptime(message["last_modified_time"], format_string)
     message["creation_time"] = datetime.strptime(message["creation_time"], format_string)
@@ -99,6 +100,7 @@ for consumer_message in consumer:
     }
 
     # Create index in elastic if not exists:
+
     if not es.indices.exists(index=index_name):
         es.indices.create(index=index_name, body=mapping)
 
@@ -109,4 +111,3 @@ for consumer_message in consumer:
     file_id = fs.open_upload_stream_with_id(unique_id, message["file_name"])
     file_id.write(file_audio)
     file_id.close()
-

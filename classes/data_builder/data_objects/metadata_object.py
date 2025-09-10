@@ -14,9 +14,9 @@ class MetaData:
 
     def timestamp_to_datetime(self) -> None:
         self.last_modified_time = datetime.fromtimestamp(self.last_modified_time)
-        self.last_modified_time = self.last_modified_time.strftime("%Y-%m-%d %H:%M:%S.%f")
+        self.last_modified_time = self.last_modified_time.strftime("yyyy-MM-dd HH:mm:ss.SSSSSS")
         self.creation_time = datetime.fromtimestamp(self.creation_time)
-        self.creation_time = self.creation_time.strftime("%Y-%m-%d %H:%M:%S.%f")
+        self.creation_time = self.creation_time.strftime("yyyy-MM-dd HH:mm:ss.SSSSSS")
 
 
 
