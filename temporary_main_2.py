@@ -36,8 +36,7 @@ mapping = {
               "type" : "long"
             },
             "last_modified_time": {
-                "type": "date",
-                "format": "yyyy-MM-dd HH:mm:ss.SSSSSS"
+                "type": "date"
             },
             "creation_time": {
                 "type": "date"
