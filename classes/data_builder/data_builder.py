@@ -19,9 +19,9 @@ class DataBuilder:
 
 
     @staticmethod
-    def gen_bulk_doc_builder(docs_gen, index, is_id = None):
+    def gen_bulk_doc_builder(docs_gen, index, his_id = None):
         for doc in docs_gen:
             item = {"_index": index, "_source": doc}
-            if is_id:
-                item['_id'] = is_id
+            if his_id:
+                item['_id'] = his_id
             yield item
