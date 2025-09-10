@@ -1,0 +1,28 @@
+from elasticsearch import Elasticsearch
+from elasticsearch.helpers import bulk
+
+
+class ElasticSearchWriter:
+
+    def __init__(self, client : Elasticsearch):
+        self.client = client
+
+
+    def create_index(self, index : str, mapping : dict = None) -> None:
+        if mapping:
+            self.client.indices.create(index=index, body=mapping)
+        else:
+            self.client.indices.create(index=index)
+
+
+    def bulk_index(self, iter_docs) -> None:
+        success, errors = bulk(self.client, iter_docs, raise_on_error=False)
+        print(success)
+        if errors:
+            from pprint import pprint
+            pprint(errors)
+        print(success)
+
+
+    def index_one_document(self, index: str, doc: dict, doc_id: str = None) -> None:
+        self.client.index(index=index, id=doc_id, document=doc)
