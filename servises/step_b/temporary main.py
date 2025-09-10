@@ -32,8 +32,24 @@ db_name = "the_muezzin"
 
 col_name = "podcasts_metadata"
 #
+#
+
 
 # OBJECTS
+
+my_consumer = KafkaConsumer(topic_name, **my_consumer_configs)
+
+my_elasticsearch = Elasticsearch(my_elastic_uri)
+
+my_mongodb_client = MongoClient(my_mongodb_uri)
+
+my_grid_fs_bucket = GridFSBucket(my_mongodb_client[db_name], col_name)
+#
+#
+
+# LOGIC
+
+
 
 
 
