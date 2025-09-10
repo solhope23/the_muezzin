@@ -1,3 +1,3 @@
 from project.servises.step_b.configs.mongodb_configs import MongoDBConfigs
 from project.classes.dal.connections.mongodb_connection import MongoDBConnection
-from project.classes.dal.writers.mongodb_writer.mongodb_writer import MongoDBFetcher
+from project.classes.dal.writers.mongodb_writer.mongodb_writer import MongoDBWriter
